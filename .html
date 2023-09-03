@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <title>회원 정보</title>
+    <style>
+      body {
+          background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyZ4TXNXTCfRRXveSPA4mD7y8zqLLL8qNvpA&usqp=CAU)
+      }
+</style>
+
+  </head>
+
+  <body>
+    <div style='font-size:x-large;'>
+
+    <h1>회원 정보</h1>
+
+    <ul id="member-list">
+
+    </ul>
+
+    <input type="number" id="member-number" placeholder="회원 번호 입력">
+
+    <button onclick="addPoints()">포인트 추가</button>
+
+
+    <script>
+
+      // 회원 정보 배열
+
+      const members = [
+
+        { id: '이솦사람', point: 100000 },
+
+        { id: 'enterry', point: 430 },
+
+        { id: '엠티', point: 2629 },
+
+        { id: '부주키', point: 65 },
+
+        { id: 'escaton', point: 560 },
+
+        { id: 'magenta', point: 30 },
+
+        { id: '호야', point: 383 },
+
+        { id: '로뉴비', point: 120 },
+
+        { id: '마잼', point: 1086.1 },
+
+        { id: '리윈드', point: 80 },
+
+        { id: '임금봇', point: 45 },
+
+        { id: '오늘도 폭발하는 엘프', point: 15 },
+
+        { id: '라율윈디가디', point: 35 },
+
+        { id: '냔똥', point: 35 },
+
+        { id: '흑뇽뇽', point: 166 },
+
+        { id: 'cnu 1~9', point: 185 },
+
+        { id: '난뭐지', point: 115 },
+
+        { id: '뉴진스', point: 125 },
+
+        { id: '작심영초', point: 100 },
+
+        { id: 'plaker', point: 35 },
+
+        { id: '알많', point: 175 },
+
+        { id: '제육이', point: 80 },
+
+        { id: '응애', point: 25 },
+
+        { id: '딸기칩', point: 645 },
+
+        { id: '둣교짱', point: 90 },
+
+        { id: '농민봇', point: 15 },
+
+        { id: '귄귄', point: 28 },
+
+        { id: '여잼봇', point: 5 },
+
+        { id: '킬스', point: 50 },
+
+        { id: '익명', point: 10 },
+
+        { id: '사신봇', point: 10 },
+
+        { id: 'AT슬라임', point: 73 },
+
+        { id: '봄치레', point: 180 },
+
+        { id: 'N형반도체', point: 16 },
+
+        { id: '브렉', point: 5 },
+
+        { id: '이삭이', point: 20 },
+
+        { id: 'ㄱ1ㅁ서준', point: 1024 },
+
+        { id: '지행', point: 254 },
+        
+        { id: '왕장봇', point: 10 },
+
+        { id: '응돌', point: 70 },
+
+        { id: 'an', point: 545 },
+        
+        { id: '대한공505', point: 5 },
+
+        { id: '최강뉴욕', point: 5 },
+
+        { id: '세이프', point: 10 },
+        
+        { id: '폭8의힘', point: 10 },
+
+        { id: '팀쓰레기', point: 5 },
+
+        { id: '무짌', point: 80 },
+        
+        { id: '빈', point: 5 },
+
+        { id: 'P,P', point: 10 },
+
+        { id: '이브이진우', point: 200 },
+        
+        { id: 'CO딩1357', point: 65 },
+
+        { id: '알약이', point: 30 },
+
+        { id: '복카', point: 10 },
+        
+        { id: '무지이', point: 30 },
+
+        { id: '우리는 엔둥이', point: 15 },
+
+        { id: '림(lim_)', point: 55 },
+        
+        { id: '사용자', point: 40 },
+
+        { id: '하늘숲코딩', point: 35 },
+
+        { id: 'ZW', point: 30 },
+        
+        { id: 'YESS', point: 21 },
+
+        { id: '이름할게없다', point: 215 },
+
+      ];
+
+
+      // 페이지 로드 시 회원 리스트를 생성합니다.
+
+      function createMemberList() {
+
+        const memberList = document.querySelector('#member-list');
+
+
+
+        members.forEach((member, index) => {
+
+          const li = document.createElement('li');
+
+          li.innerHTML = `아이디: ${member.id}, 포인트: <span id="point-${index}">${member.point}</span>`;
+
+          memberList.appendChild(li);
+
+        });
+
+      }
+
+      function addPoints() {
+
+        const currentDate = new Date();
+
+        const savedDate = localStorage.getItem('lastClickDate');
+
+        if (!savedDate || savedDate !== currentDate.toDateString()) {
+
+          const memberNumber = document.querySelector('#member-number').value;
+
+          members[memberNumber - 1].point += 5;
+
+          const point = document.querySelector(`#point-${memberNumber - 1}`);
+
+          point.innerText = members[memberNumber - 1].point;
+
+          document.querySelector('button').disabled = true;
+
+          localStorage.setItem('lastClickDate', currentDate.toDateString());
+
+        }
+
+      }
+
+
+
+      window.onload = createMemberList;
+
+    </script>
+
+  </body>
+</div>
+</html>
+
